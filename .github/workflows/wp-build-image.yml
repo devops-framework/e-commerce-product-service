@@ -1,18 +1,27 @@
-name: Build e-commerce-product-service Docker Image for Staging
+name: Build e-commerce-product-service for Staging
+run-name: 'Build and Push Docker Image for Staging'
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
+      - release/homelab/*
+
+concurrency:
+  group: 'build-staging'
+  cancel-in-progress: true
 
 jobs:
   build:
+    name: Build e-commerce-product-service & Push to Docker Hub
     runs-on: stg-ci-runner-set
+    environment: staging
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Run Docker Build & Push Composite Action
-        uses: devops-framework/iac-vagrant-k8s-cluster-local/.github/actions/docker-build-push@develop/homelab/create-composite-actions
+        uses: devops-framework/iac-vagrant-k8s-cluster-local/.github/actions/dockerhub-build-push@develop/homelab/create-composite-actions
         with:
           docker_username: ${{ secrets.DOCKER_USERNAME }}
           docker_password: ${{ secrets.DOCKER_PASSWORD }}
