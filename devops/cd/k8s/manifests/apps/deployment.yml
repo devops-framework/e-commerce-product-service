@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+  namespace: ec-stg
+  labels:
+    app: product-service
+    target_env: stg
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+        - name: product-service
+          image: tantran0411/e-commerce-product-service:homelab-v1 # Đảm bảo tên image khớp với lệnh build docker của bạn
+          # imagePullPolicy: IfNotPresent # Sử dụng image local nếu chưa push lên registry
+          ports:
+            - containerPort: 8080
