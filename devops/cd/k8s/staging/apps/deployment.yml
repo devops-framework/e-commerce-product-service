@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: product-service
-  namespace: ec-stg
+  namespace: backend-stg
   labels:
     app: product-service
     target_env: stg
