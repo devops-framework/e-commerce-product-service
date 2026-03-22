@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: product-service
-          image: tantran0411/e-commerce-product-service:homelab-v1 # Đảm bảo tên image khớp với lệnh build docker của bạn
-          # imagePullPolicy: IfNotPresent # Sử dụng image local nếu chưa push lên registry
+          image: tantran0411/e-commerce-product-service:gha-staging-master-2449dd2
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
