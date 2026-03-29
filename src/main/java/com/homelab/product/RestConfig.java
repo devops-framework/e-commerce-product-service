@@ -8,5 +8,4 @@ import java.util.HashSet;
 import java.util.Set;
 
 @ApplicationPath("/api")
-public class RestConfig extends Application {
-}
+public class RestConfig extends Application {}

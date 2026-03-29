@@ -10,6 +10,7 @@ COPY pom.xml /app/pom.xml
 # copy nó vào /app/.m2 trước khi mvn chạy. Workflow đảm bảo .m2-cache luôn tồn tại
 # (có thể rỗng) để COPY không fail.
 COPY ./.m2 /app/.m2
+COPY src /app/src
 RUN mvn package -DskipTests -Dmaven.repo.local=/app/.m2/repository
 
 # Stage 2: Runtime với Tomcat (như doanh nghiệp bạn hay dùng)
