@@ -17,7 +17,7 @@ concurrency:
 jobs:
   build-deps:
     name: e-commerce-storeback-product-service-deps
-    uses: devops-framework/iac-vagrant-k8s-cluster-local/.github/workflows/wc-reusable-build-deps.yml@develop/homelab/add-reusable-build-deps
+    uses: devops-framework/iac-vagrant-k8s-cluster-local/.github/workflows/wc-reusable-build-deps.yml@dev
     permissions:
       contents: read
     secrets: inherit
@@ -28,7 +28,7 @@ jobs:
   build-docker-image:
     needs: build-deps
     name: e-commerce-storeback-product-service
-    uses: devops-framework/iac-vagrant-k8s-cluster-local/.github/workflows/wc-reusable-auto-build-image.yml@develop/homelab/add-reusable-build-deps
+    uses: devops-framework/iac-vagrant-k8s-cluster-local/.github/workflows/wc-reusable-auto-build-image.yml@dev
     permissions:
       contents: write
     with:
