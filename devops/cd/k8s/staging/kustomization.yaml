@@ -3,7 +3,7 @@ kind: Kustomization
 
 images:
   - name: tantran0411/e-commerce-product-service
-    newTag: gha-staging-39ce003
+    newTag: gha-staging-8f38884
 
 resources:
   - apps/deployment.yml
